@@ -60,9 +60,14 @@ server.on("request", (req, res) => {
   if (req.url === "/") {
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("Hello, World!");
+  } else if (req.url === "/get-location") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.end(JSON.stringify(users.map(user => user.coords)));
   }
 });
+
 
 server.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
+
