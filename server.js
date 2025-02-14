@@ -56,6 +56,13 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("users", users);
   });
 });
+server.on("request", (req, res) => {
+  if (req.url === "/") {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello, World!");
+  }
+});
+
 server.listen(PORT, () => {
   console.log(`listening on ${PORT}`);
 });
